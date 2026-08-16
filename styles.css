@@ -44,7 +44,7 @@ body {
 
 .card {
   width: 100%;
-  max-width: 36rem;
+  max-width: 47rem;
   text-align: center;
 }
 
@@ -87,25 +87,27 @@ body {
 }
 
 .services {
-  margin: 3.25rem 0 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.35rem 1.25rem;
+  margin: 3.5rem 0 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+.services dt {
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.services dd {
+  margin: 0.4rem 0 0;
   font-size: 0.875rem;
+  line-height: 1.55;
   color: var(--muted);
 }
 
-.services li + li::before {
-  content: "·";
-  margin-right: 1.25rem;
-  color: var(--faint);
-}
-
 .legal {
-  margin: 2.5rem 0 0;
+  max-width: 36rem;
+  margin: 3.5rem auto 0;
   font-size: 0.75rem;
   line-height: 1.75;
   color: var(--faint);
@@ -132,16 +134,11 @@ a:focus-visible {
   border-radius: 1px;
 }
 
-@media (max-width: 30rem) {
+@media (max-width: 46rem) {
   .services {
-    display: block;
-  }
-
-  .services li + li {
-    margin-top: 0.35rem;
-  }
-
-  .services li + li::before {
-    content: none;
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    max-width: 24rem;
+    margin-inline: auto;
   }
 }
