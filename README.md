@@ -1,6 +1,6 @@
 # JPC Systems Ltd website
 
-Static company website for [jpcsystems.co.uk](https://www.jpcsystems.co.uk), hosted by GitHub Pages.
+Static company website for [jpcsystems.co.uk](https://jpcsystems.co.uk), hosted by GitHub Pages.
 
 ## Local preview
 
@@ -12,7 +12,7 @@ Then open <http://127.0.0.1:8000/>.
 
 ## Deployment
 
-GitHub Pages publishes the root of the `main` branch. The `CNAME` file configures `www.jpcsystems.co.uk` as the canonical custom domain. GitHub Pages redirects the apex domain to `www` when both sets of DNS records are present.
+GitHub Pages publishes the root of the `main` branch. The `CNAME` file configures `jpcsystems.co.uk` as the canonical custom domain. GitHub Pages redirects `www` to the apex domain when both sets of DNS records are present.
 
 The required web DNS records are:
 
