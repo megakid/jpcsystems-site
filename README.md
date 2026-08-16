@@ -12,7 +12,7 @@ Then open <http://127.0.0.1:8000/>.
 
 ## Deployment
 
-GitHub Pages publishes the root of the `main` branch. The `CNAME` file configures the apex custom domain.
+GitHub Pages publishes the root of the `main` branch. The `CNAME` file configures `www.jpcsystems.co.uk` as the canonical custom domain. GitHub Pages redirects the apex domain to `www` when both sets of DNS records are present.
 
 The required web DNS records are:
 
