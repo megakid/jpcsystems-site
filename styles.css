@@ -1,21 +1,22 @@
 :root {
-  --paper: #fbfaf8;
-  --ink: #1c1a17;
-  --muted: #5f5a52;
-  --rule: #e2ddd3;
-  --underline: #b9b1a4;
-  --serif: ui-serif, Charter, "Bitstream Charter", "Iowan Old Style", "Sitka Text",
-    Cambria, Georgia, serif;
+  --paper: #ffffff;
+  --ink: #16181c;
+  /* both greys clear WCAG AA 4.5:1 on --paper at their rendered sizes */
+  --muted: #5c6069;
+  --faint: #6b7078;
+  --rule: #d4d7dc;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
   color-scheme: light dark;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --paper: #151412;
-    --ink: #e9e5de;
-    --muted: #a09a90;
-    --rule: #302c27;
-    --underline: #5b554d;
+    --paper: #101113;
+    --ink: #ecedef;
+    --muted: #9498a0;
+    --faint: #7d818a;
+    --rule: #33363b;
   }
 }
 
@@ -29,114 +30,85 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--serif);
-  font-size: 1.0625rem;
-  line-height: 1.62;
+  font-family: var(--sans);
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
 .page {
-  max-width: 37rem;
-  margin: 0 auto;
-  padding: 5.5rem 1.75rem 4rem;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 3rem 1.5rem;
 }
 
-/* Masthead */
-
-.masthead {
-  margin-bottom: 3rem;
+.card {
+  width: 100%;
+  max-width: 36rem;
+  text-align: center;
 }
 
-h1 {
+.wordmark {
   margin: 0;
-  font-size: 1.375rem;
+  font-size: clamp(1.5rem, 5.5vw, 2.125rem);
   font-weight: 600;
-  letter-spacing: 0;
-  line-height: 1.3;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  /*
+   * Letter-spacing adds a trailing gap, pulling centred glyphs half a space left.
+   * Under text-align:center a text-indent shifts text by half its value, so the
+   * indent must equal the full letter-spacing to recentre.
+   */
+  text-indent: 0.16em;
 }
 
-.standfirst {
-  margin: 0.35rem 0 0;
+.rule {
+  display: block;
+  width: 3rem;
+  height: 2px;
+  margin: 1.75rem auto;
+  background: var(--ink);
+}
+
+.tagline {
+  margin: 0;
+  font-size: clamp(0.75rem, 2.6vw, 0.875rem);
+  font-weight: 400;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
   color: var(--muted);
+  text-indent: 0.13em;
 }
 
-/* Blocks */
-
-.block {
-  margin-bottom: 2.75rem;
-}
-
-h2 {
-  margin: 0 0 1rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--rule);
+.email {
+  margin: 0.75rem 0 0;
   font-size: 0.9375rem;
-  font-weight: 600;
-  color: var(--muted);
 }
-
-p {
-  margin: 0 0 1rem;
-}
-
-p:last-child {
-  margin-bottom: 0;
-}
-
-.lede {
-  font-size: 1.1875rem;
-  line-height: 1.55;
-}
-
-/* Services */
 
 .services {
-  margin: 0;
-}
-
-.services dt {
-  font-weight: 600;
-}
-
-.services dd {
-  margin: 0.15rem 0 1.5rem;
+  margin: 3.25rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35rem 1.25rem;
+  font-size: 0.875rem;
   color: var(--muted);
 }
 
-.services dd:last-child {
-  margin-bottom: 0;
+.services li + li::before {
+  content: "·";
+  margin-right: 1.25rem;
+  color: var(--faint);
 }
 
-/* Company details */
-
-.details {
-  margin: 0;
-  font-size: 0.9375rem;
-}
-
-.details > div {
-  display: grid;
-  grid-template-columns: 9.5rem 1fr;
-  gap: 0 1.5rem;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid var(--rule);
-}
-
-.details > div:first-child {
-  padding-top: 0;
-}
-
-.details dt {
-  color: var(--muted);
-}
-
-.details dd {
-  margin: 0;
-}
-
-.registry {
-  margin-top: 1rem;
-  font-size: 0.9375rem;
+.legal {
+  margin: 2.5rem 0 0;
+  font-size: 0.75rem;
+  line-height: 1.75;
+  color: var(--faint);
 }
 
 /* Links */
@@ -144,8 +116,8 @@ p:last-child {
 a {
   color: inherit;
   text-decoration: underline;
-  text-decoration-color: var(--underline);
-  text-underline-offset: 0.18em;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 0.2em;
   text-decoration-thickness: 1px;
 }
 
@@ -160,23 +132,16 @@ a:focus-visible {
   border-radius: 1px;
 }
 
-/* Colophon */
-
-.colophon {
-  margin-top: 1.25rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--rule);
-  color: var(--muted);
-  font-size: 0.875rem;
-}
-
-@media (max-width: 34rem) {
-  .page {
-    padding: 3.5rem 1.375rem 3rem;
+@media (max-width: 30rem) {
+  .services {
+    display: block;
   }
 
-  .details > div {
-    grid-template-columns: 1fr;
-    gap: 0.1rem;
+  .services li + li {
+    margin-top: 0.35rem;
+  }
+
+  .services li + li::before {
+    content: none;
   }
 }
